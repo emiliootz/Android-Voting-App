@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="edu.umb.homework2.MyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.firstRank}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/gridLayout"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.secondRank}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@id/textView1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.thirdRank}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+            app:layout_constraintEnd_toStartOf="@+id/textView4"
+            app:layout_constraintStart_toEndOf="@id/textView2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.fourthRank}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textView3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:columnCount="2"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView1"
+            app:rowCount="2">
+
+            <TextView
+                android:id="@+id/redPerc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewmodel.redPercentage}"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="60sp"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal"
+                app:layout_rowWeight="1" />
+
+            <TextView
+                android:id="@+id/orangePerc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewmodel.orangePercentage}"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textSize="60sp"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal"
+                app:layout_rowWeight="1" />
+
+            <TextView
+                android:id="@+id/bluePerc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewmodel.bluePercentage}"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="60sp"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal"
+                app:layout_rowWeight="1" />
+
+            <TextView
+                android:id="@+id/greenPerc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewmodel.greenPercentage}"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="60sp"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal"
+                app:layout_rowWeight="1" />
+
+        </androidx.gridlayout.widget.GridLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Vote"
+            android:onClick="@{()-> viewmodel.voteRed()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gridLayout" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:text="Vote"
+            android:onClick="@{()-> viewmodel.voteOrange()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintStart_toEndOf="@id/button"
+            app:layout_constraintTop_toBottomOf="@id/gridLayout" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Vote"
+            android:onClick="@{()-> viewmodel.voteBlue()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button4"
+            app:layout_constraintStart_toEndOf="@id/button2"
+            app:layout_constraintTop_toBottomOf="@id/gridLayout" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Vote"
+            android:onClick="@{()-> viewmodel.voteGreen()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button3"
+            app:layout_constraintTop_toBottomOf="@id/gridLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
